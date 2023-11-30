@@ -62,25 +62,21 @@ function createDivsForColors(colorArray) {
 // TODO: Implement this function!
 function handleCardClick(event) {
   let currentCard = event.target;
-  currentCard.style.backgroundColor = currentCard.classList[0];
+  // currentCard.style.backgroundColor = currentCard.classList[0];
+  card1 = currentCard;
+  card2 = currentCard;
 
-  if (!card1) {
-    card1 = currentCard;
+  if (card1.classList[0] === card2.classList[0]) {
+    card1.style.backgroundColor = currentCard.classList[0];
+    card2.style.backgroundColor = currentCard.classList[0];
   } else {
-    card2 = currentCard;
-
-    if (card1.classList[0] === card2.classList[0]) {
-      card1.classList[0]
-      card2.classList[0]
-    } else {
-      setTimeout(function () {
-        card1.style.backgroundColor = 'white';
-        card2.style.backgroundColor = 'white';
-      }, 1000);
-    }
-    card1 = null;
-    card2 = null;
+    setTimeout(function () {
+      card1.style.backgroundColor = 'white';
+      card2.style.backgroundColor = 'white';
+    }, 1000);
   }
+  card1 = null;
+  card2 = null;
 }
 
 // when the DOM loads
