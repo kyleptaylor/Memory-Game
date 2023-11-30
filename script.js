@@ -65,24 +65,19 @@ function handleCardClick(event) {
   currentCard.style.backgroundColor = currentCard.classList[0];
 
   if (!card1) {
-    // If card1 is not set, set it to the clicked card
     card1 = currentCard;
   } else {
-    // If card1 is set, set card2 to the clicked card
     card2 = currentCard;
 
-    // Check if the cards match
     if (card1.classList[0] === card2.classList[0]) {
-      // Cards match, do something (e.g., keep them face up)
+      card1.classList[0]
+      card2.classList[0]
     } else {
-      // Cards don't match, do something (e.g., flip them back)
       setTimeout(function () {
         card1.style.backgroundColor = 'white';
         card2.style.backgroundColor = 'white';
       }, 1000);
     }
-
-    // Reset card1 and card2 for the next turn
     card1 = null;
     card2 = null;
   }
