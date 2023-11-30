@@ -72,10 +72,10 @@ function handleCardClick(event) {
     card2 = currentCard.classList[0];
     console.log("Card1:", card1, " Card2:", card2 )
 
-    // Check if the cards match
     if (card1.classList[0] === card2.classList[0]) {
-      // Cards match, do something (e.g., keep them face up)
-    } else {
+      card1 = currentCard.classList[0];
+      card2 = currentCard.classList[0];
+      } else {
       setTimeout(function () {
         card1.style.backgroundColor = 'white';
         card2.style.backgroundColor = 'white';
