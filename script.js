@@ -1,18 +1,18 @@
 const gameContainer = document.getElementById("game");
-let card1 = null;
-let card2 = null;
 
 const COLORS = [
   "red",
+  "violet",
   "blue",
   "green",
   "orange",
-  "purple",
+  "yellow",
   "red",
+  "violet",
   "blue",
   "green",
   "orange",
-  "purple"
+  "yellow"
 ];
 
 // here is a helper function to shuffle an array
@@ -60,33 +60,53 @@ function createDivsForColors(colorArray) {
 }
 
 // TODO: Implement this function!
+
+let card1 = null;
+let card2 = null;
+let noClick = false;
+let cardCount = 0;
 function handleCardClick(event) {
+
+if (noClick) {return};
+
 let currentCard = event.target;
+currentCard.style.backgroundColor = currentCard.classList[0];
 
-if (!card1) {
-  card1 = currentCard;
-  currentCard.style.backgroundColor = currentCard.classList[0]; 
+if (!card1 || !card2) {
+ card1 = card1 || currentCard;
+ card2 = currentCard === card1 ? null : currentCard;
+}
+
+if (card1 && card2) {
+noClick = true;
+let color1 = card1.className;
+let color2 = card2.className;
+
+if( color1 === color2){
+  cardCount += 2;
+  card1.removeEventListener("click", handleCardClick);
+  card2.removeEventListener("click", handleCardClick);
+  card1 = null;
+  card2 = null;
+  noClick = false;
   } else {
-    card2 = currentCard;
-    currentCard.style.backgroundColor = currentCard.classList[0]; 
-
-    if (card1.classList[0] === card2.classList[0]) {
+    setTimeout(function(){
+      card1.style.backgroundColor = "";
+      card2.style.backgroundColor = "";
       card1 = null;
       card2 = null;
-      
-    } else {
-      setTimeout(function () {
-        console.log("here is card1: ", card1, "here is card2: ", card2)
-        card2 = currentCard;
-        card2.style.backgroundColor = "white"; 
-        card1 = currentCard;
-        card1.style.backgroundColor = "white"; 
-      }, 1000);
-    }
-
-    card1 = null;
-    card2 = null;
+      noClick = false;
+    }, 1000)
   }
+
 }
+if (cardCount === COLORS.length) {winnerFunc()}
+}
+
+function winnerFunc() {
+  let winnerBox = document.getElementById("winner-box");
+  winnerBox.style.visibility = 'visible';
+}
+
 // when the DOM loads
 createDivsForColors(shuffledColors);
