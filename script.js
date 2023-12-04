@@ -71,6 +71,7 @@ if (noClick) {return};
 
 let currentCard = event.target;
 currentCard.style.backgroundColor = currentCard.classList[0];
+currentCard.classList.add('.selected')
 
 if (!card1 || !card2) {
  card1 = card1 || currentCard;
@@ -96,7 +97,7 @@ if( color1 === color2){
       card1 = null;
       card2 = null;
       noClick = false;
-    }, 1000)
+    }, 500)
   }
 
 }
@@ -107,6 +108,13 @@ function winnerFunc() {
   let winnerBox = document.getElementById("winner-box");
   winnerBox.style.visibility = 'visible';
 }
+
+function refreshPage(){
+  window.location.reload();
+} 
+
+const restart = document.getElementById("restart");
+restart.addEventListener("click", refreshPage);
 
 // when the DOM loads
 createDivsForColors(shuffledColors);
