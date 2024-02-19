@@ -1,18 +1,18 @@
 const gameContainer = document.getElementById("game");
 
 const COLORS = [
-  "red",
-  "violet",
-  "blue",
-  "green",
-  "orange",
-  "yellow",
-  "red",
-  "violet",
-  "blue",
-  "green",
-  "orange",
-  "yellow"
+  "#FF0000",
+  "#FF00FF",
+  "#00FFFF",
+  "#00FF00",
+  "#9D00FF",
+  "#FFFF00",
+  "#FF0000",
+  "#FF00FF",
+  "#00FFFF",
+  "#00FF00",
+  "#9D00FF",
+  "#FFFF00"
 ];
 
 // here is a helper function to shuffle an array
@@ -71,7 +71,6 @@ if (noClick) {return};
 
 let currentCard = event.target;
 currentCard.style.backgroundColor = currentCard.classList[0];
-currentCard.classList.add('.selected')
 
 if (!card1 || !card2) {
  card1 = card1 || currentCard;

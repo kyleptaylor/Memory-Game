@@ -1,27 +1,36 @@
 body{
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  background-color: darkgray;
+  background-color: #010402;
   box-sizing: border-box;
 }
 
 h1 {
   text-align: center;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 5em;
+  font-size: 3em;
+  color: #4bc3b5;
+  margin: 50px 20px 20px;
 }
 
 #game {
-box-sizing: border-box;
-margin: 50px auto;
-width: max-content;
-display: grid;
-grid-template-columns: repeat(4, 10em);
-gap: 30px;
+  box-sizing: border-box;
+  margin: 50px auto;
+  width: max-content;
+  display: grid;
+  grid-template-columns: repeat(4, 10em);
+  gap: 10px;
+}
+
+@media (max-width: 1000px) {
+  #game {
+    grid-template-columns: repeat(3, 6em);
+    gap: 10px;
+  }
 }
 
 #game div {
   box-sizing: border-box;
-  border: 5px solid #444444;
+  border: 2px solid #4bc3b5;
   height: 10em;
   width: 100%;
   cursor: pointer;
@@ -29,47 +38,51 @@ gap: 30px;
   transition: transform 0.2s;
 }
 
+@media (max-width: 1000px) {
+  #game div {
+    height: 6em;
+  }
+}
+
 #game div:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 #winner-box{
   visibility: hidden;
-  box-sizing: border-box;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  border: 5px solid #444444;
-  width: 75%;
-  padding: 2em;
-  background-color: rgba(144, 238, 144, 0.8);
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translatex(-50%);
+  width: 100%;
+  height: 100%;
+  background-color: #4bc3b550;
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0%;
+  left: 0%;
 }
 
 #winner-box h2{
-  font-size: 4em;
+  font-size: 2.2em;
+  margin: 20% 20px 0;
 }
 
 #restart {
-  font-size: 1.5em;
   box-sizing: border-box;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  font-size: 3em;
-  background-color: darkgrey;
-  color: #444444;
-  border: 3px solid #444444;
-  padding: 10px;
-  width: 80%;
+  font-size: 2em;
+  background-color: #4bc3b5;
+  color: #eeeeee;
+  border: none;
+  padding: 20px 75px;
   margin: 40px 10px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 
 #restart:hover{
-  border: 3px solid #fff;
-  color: #fff;
-  background-color: #444444;
-  transform: scale(1.2);
+  color: #4bc3b5;
+  background-color: #010402;
+  transform: scale(1.02);
 }
